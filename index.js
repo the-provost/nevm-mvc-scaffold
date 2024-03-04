@@ -163,16 +163,17 @@ function vueInstall() {
 
 // Update frontend files and folders
 function updateFrontend() {
-    const frontendPackageJson = require('./frontend/package.json');
+    const frontendPackageJsonPath = path.join(process.cwd(), 'frontend', 'package.json');
+    const frontendPackageJson = require(frontendPackageJsonPath);
     // Update scripts in package.json
     frontendPackageJson.scripts.dev = "vite";
     frontendPackageJson.scripts.build = "vite build";
-    fs.writeFileSync('./frontend/package.json', JSON.stringify(frontendPackageJson, null, 2));
+    fs.writeFileSync(frontendPackageJsonPath, JSON.stringify(frontendPackageJson, null, 2));
 
     // Create 'router' directory if it doesn't exist
-    const routerDirectory = './frontend/src/router';
+    const routerDirectory = path.join(process.cwd(), 'frontend', 'src', 'router');
     if (!fs.existsSync(routerDirectory)) {
-        fs.mkdirSync(routerDirectory);
+        fs.mkdirSync(routerDirectory, { recursive: true });
         console.log(`Created directory: ${routerDirectory}`);
     } else {
         console.log(`Directory already exists: ${routerDirectory}`);
@@ -188,7 +189,7 @@ function updateFrontend() {
         console.log('Vue Router installed successfully.');
 
         // Generate router.js file
-        const routerFile = path.join(process.cwd(), 'frontend/src/router/router.js');
+        const routerFile = path.join(process.cwd(), 'frontend', 'src', 'router', 'router.js');
         const routerContent = `
     import { createRouter, createWebHistory } from 'vue-router';
     // Import your Vue components for routing
@@ -219,3 +220,4 @@ function updateFrontend() {
         });
     });
 }
+
