@@ -143,8 +143,8 @@ function vueInstall() {
     rl.question('Do you want to install Vue.js with Vite? (y/n): ', (answer) => {
         if (answer.toLowerCase() === 'y') {
             const frontEndDirectory = './frontend';
-            process.chdir(frontEndDirectory);
             console.log('Installing Vue.js with Vite...');
+            process.chdir(frontEndDirectory); // Change directory to frontend
             exec('npm install vite @vitejs/plugin-vue', (error, stdout, stderr) => {
                 if (error) {
                     console.error(`Error installing Vue.js with Vite: ${error}`);
@@ -160,6 +160,7 @@ function vueInstall() {
         }
     });
 }
+
 
 // Update frontend files and folders
 function updateFrontend() {
