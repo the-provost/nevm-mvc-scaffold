@@ -84,6 +84,7 @@ function generateServerFile() {
             return;
         }
         console.log('Server file (server.js) generated successfully.');
+        installORM();
         rl.close();
     });
 }
@@ -136,24 +137,26 @@ function installMongoose() {
     });
 }
 
-// Prompt the user if they want to install Vue.js with Vite
-rl.question('Do you want to install Vue.js with Vite? (y/n): ', (answer) => {
-    if (answer.toLowerCase() === 'y') {
-        console.log('Installing Vue.js with Vite...');
-        exec('npm install vite @vitejs/plugin-vue', (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error installing Vue.js with Vite: ${error}`);
-                return;
-            }
-            console.log(stdout);
-            console.log('Vue.js with Vite installed successfully.');
-            updateFrontend();
-        });
-    } else {
-        console.log('Skipping installation of Vue.js with Vite.');
-        rl.close();
-    }
-});
+function vueInstall() {
+    // Prompt the user if they want to install Vue.js with Vite
+    rl.question('Do you want to install Vue.js with Vite? (y/n): ', (answer) => {
+        if (answer.toLowerCase() === 'y') {
+            console.log('Installing Vue.js with Vite...');
+            exec('npm install vite @vitejs/plugin-vue', (error, stdout, stderr) => {
+                if (error) {
+                    console.error(`Error installing Vue.js with Vite: ${error}`);
+                    return;
+                }
+                console.log(stdout);
+                console.log('Vue.js with Vite installed successfully.');
+                updateFrontend();
+            });
+        } else {
+            console.log('Skipping installation of Vue.js with Vite.');
+            rl.close();
+        }
+    });
+}
 
 // Update frontend files and folders
 function updateFrontend() {
