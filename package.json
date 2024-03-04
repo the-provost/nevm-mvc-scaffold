@@ -1,10 +1,11 @@
 {
   "name": "nevm-mvc-scaffold",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Initialize project structure for Node.js applications following the MVC pattern with express.js, vue, vue-router and vite",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "cp index.js ../setup.js && cd .. && node setup.js"
   },
   "keywords": [
     "node",
@@ -18,6 +19,6 @@
     "vite",
     "folders"
   ],
-  "author": "Your Name",
+  "author": "Jesil Jose (the-provost)",
   "license": "MIT"
 }

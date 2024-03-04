@@ -5,14 +5,14 @@ const { exec } = require('child_process');
 
 // Define directories to create
 const directories = [ 
-    'backend/controllers',
-    'backend/models',
-    'backend/routes',
-    'backend/services',
-    'backend/config',
-    'backend/middleware',
-    'frontend/src/components',
-    'frontend/src/router'
+    '../../backend/controllers',
+    '../../backend/models',
+    '../../backend/routes',
+    '../../backend/services',
+    '../../backend/config',
+    '../../backend/middleware',
+    '../../frontend/src/components',
+    '../../frontend/src/router'
 ];
 
 console.log("Hey! I am the NEVM MVC Scaffolding Tool you've been searching for!");
