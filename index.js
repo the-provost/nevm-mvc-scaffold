@@ -142,6 +142,8 @@ function vueInstall() {
     // Prompt the user if they want to install Vue.js with Vite
     rl.question('Do you want to install Vue.js with Vite? (y/n): ', (answer) => {
         if (answer.toLowerCase() === 'y') {
+            const frontEndDirectory = './frontend';
+            process.chdir(frontEndDirectory);
             console.log('Installing Vue.js with Vite...');
             exec('npm install vite @vitejs/plugin-vue', (error, stdout, stderr) => {
                 if (error) {
