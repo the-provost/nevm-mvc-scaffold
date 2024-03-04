@@ -143,7 +143,6 @@ function installMongoose() {
         vueInstall();
     });
 }
-
 function vueInstall() {
     showDivider('-', 40);
     // Save the current working directory
@@ -152,16 +151,34 @@ function vueInstall() {
     rl.question('Do you want to install Vue.js with Vite? (y/n): ', (answer) => {
         if (answer.toLowerCase() === 'y') {
             const frontEndDirectory = 'frontend';
+
+            // Assuming the current directory is the parent directory
+            const parentDirectory = process.cwd(); // Get the current working directory
+
+            // Define the path to the frontend folder
+            const frontEnd = path.join(parentDirectory, frontEndDirectory);
+
             console.log('Installing Vue.js with Vite...');
             const installCommand = 'npm install vite @vitejs/plugin-vue';
-            exec(installCommand, { cwd: frontEndDirectory }, (error, stdout, stderr) => {
-                process.chdir(currentDirectory); // Restore the original directory
+            exec(installCommand, (error, stdout, stderr) => {
+                // Restore the original directory
+                // process.chdir(currentDirectory);
                 if (error) {
                     console.error(`Error installing Vue.js with Vite: ${error}`);
                     return;
                 }
                 console.log(stdout);
                 console.log('Vue.js with Vite installed successfully.');
+                console.log(`Installed Directory: ${process.cwd()}`);
+
+                // Check if package.json exists inside frontend directory
+                const packageJsonPath = path.join(frontEnd, 'package.json');
+                if (fs.existsSync(packageJsonPath)) {
+                    console.log(`Package.json created inside ${frontEndDirectory} directory.`);
+                } else {
+                    console.log(`Package.json not found inside ${frontEndDirectory} directory.`);
+                }
+
                 updateFrontend(); // Move updateFrontend call here
             });
         } else {
@@ -170,6 +187,9 @@ function vueInstall() {
         }
     });
 }
+
+
+
 
 
 
@@ -187,7 +207,7 @@ function updateFrontend() {
     fs.writeFileSync(frontendPackageJsonPath, JSON.stringify(frontendPackageJson, null, 2));
     showDivider('-', 40);
     // Create 'router' directory if it doesn't exist
-    const routerDirectory = path.join(process.cwd(), 'frontend', 'src', 'router');
+    const routerDirectory = path.join(process.cwd(), 'src', 'router');
     if (!fs.existsSync(routerDirectory)) {
         fs.mkdirSync(routerDirectory, { recursive: true });
         console.log(`Created directory: ${routerDirectory}`);
