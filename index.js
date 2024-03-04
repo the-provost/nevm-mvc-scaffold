@@ -15,17 +15,17 @@ const directories = [
     'frontend/src/router'
 ];
 
-console.log("Hey! I am the NEVM MVC Scaffolding Tool you've been searching for!");
+console.log("\x1b[1m Hey! I am the NEVM MVC Scaffolding Tool you've been searching for!\x1b[0m");
 console.log();
 console.log();
-console.log("Let's get started on your nodejs app development journey with everything you need to work in peace with a clean MVC structure and a little extra magic... ");
+console.log("\x1b[1m Let's get started on your nodejs app development journey with everything you need to work in peace with a clean MVC structure and a little extra magic... \x1b[0m");
 console.log()
 function showDivider(character, length) {
     console.log(character.repeat(length));
     console.log(); // Empty line for separation
 }
 
-// Example usage:
+// Print Divider:
 showDivider('-', 40);
 // Create directories
 directories.forEach(directory => {
@@ -37,6 +37,8 @@ directories.forEach(directory => {
         console.log(`Directory already exists: ${directoryPath}`);
     }
 });
+
+showDivider('-', 40);
 
 // Create a readline interface for user input
 const rl = readline.createInterface({
@@ -65,6 +67,7 @@ rl.question('Do you want to install Express.js? (y/n): ', (answer) => {
 
 // Generate server.js file
 function generateServerFile() {
+    showDivider('-', 40);
     const serverFile = path.join(process.cwd(), 'server.js');
     const serverContent = `
   const express = require('express');
@@ -90,6 +93,7 @@ function generateServerFile() {
 
 // Prompt the user to choose an ORM
 function installORM() {
+    showDivider('-', 40);
     rl.question('Do you want to install an ORM? (sequelize(s)/mongoose(m)/neither(n)): ', (answer) => {
         if (answer.toLowerCase() === 'sequelize' || answer.toLowerCase() === 's') {
             installSequelize();
@@ -106,6 +110,7 @@ function installORM() {
 
 // Install Sequelize
 function installSequelize() {
+    showDivider('-', 40);
     console.log('Installing Sequelize...');
     exec('npm install sequelize', (error, stdout, stderr) => {
         if (error) {
@@ -123,6 +128,7 @@ function installSequelize() {
 
 // Install Mongoose
 function installMongoose() {
+    showDivider('-', 40);
     console.log('Installing Mongoose...');
     exec('npm install mongoose', (error, stdout, stderr) => {
         if (error) {
@@ -139,23 +145,24 @@ function installMongoose() {
 }
 
 function vueInstall() {
+    showDivider('-', 40);
     // Save the current working directory
     const currentDirectory = process.cwd();
     // Prompt the user if they want to install Vue.js with Vite
     rl.question('Do you want to install Vue.js with Vite? (y/n): ', (answer) => {
         if (answer.toLowerCase() === 'y') {
-            const frontEndDirectory = './frontend';
+            const frontEndDirectory = 'frontend';
             console.log('Installing Vue.js with Vite...');
-            process.chdir(frontEndDirectory); // Change directory to frontend
-            exec('npm install vite @vitejs/plugin-vue', (error, stdout, stderr) => {
-                process.chdir(currentDirectory);
+            const installCommand = 'npm install vite @vitejs/plugin-vue';
+            exec(installCommand, { cwd: frontEndDirectory }, (error, stdout, stderr) => {
+                process.chdir(currentDirectory); // Restore the original directory
                 if (error) {
                     console.error(`Error installing Vue.js with Vite: ${error}`);
                     return;
                 }
                 console.log(stdout);
                 console.log('Vue.js with Vite installed successfully.');
-                updateFrontend();
+                updateFrontend(); // Move updateFrontend call here
             });
         } else {
             console.log('Skipping installation of Vue.js with Vite.');
@@ -165,15 +172,20 @@ function vueInstall() {
 }
 
 
+
 // Update frontend files and folders
 function updateFrontend() {
-    const frontendPackageJsonPath = path.join(process.cwd(), 'frontend', 'package.json');
+    showDivider('-', 40);
+    console.error(`Current Directory: ${process.cwd()}`);
+    const frontendPackageJsonPath = path.join(process.cwd(), 'package.json');
+    // const frontendPackageJson = require(frontendPackageJsonPath);
+    console.error(`Package json exists at: ${frontendPackageJsonPath}`);
     const frontendPackageJson = require(frontendPackageJsonPath);
     // Update scripts in package.json
     frontendPackageJson.scripts.dev = "vite";
     frontendPackageJson.scripts.build = "vite build";
     fs.writeFileSync(frontendPackageJsonPath, JSON.stringify(frontendPackageJson, null, 2));
-
+    showDivider('-', 40);
     // Create 'router' directory if it doesn't exist
     const routerDirectory = path.join(process.cwd(), 'frontend', 'src', 'router');
     if (!fs.existsSync(routerDirectory)) {
