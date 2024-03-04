@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "cp index.js ../setup.js && cd .. && node setup.js"
+    "postinstall": "cp index.js ../../setup.js && cd .. && cd .. && node setup.js"
   },
   "keywords": [
     "node",
