@@ -1,6 +1,6 @@
 {
   "name": "nevm-mvc-scaffold",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Initialize project structure for Node.js applications following the MVC pattern with express.js, vue, vue-router and vite",
   "main": "index.js",
   "scripts": {
