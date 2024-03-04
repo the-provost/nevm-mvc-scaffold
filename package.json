@@ -1,6 +1,6 @@
 {
   "name": "nevm-mvc-scaffold",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Instantly initialize project structure for Node.js applications following the MVC pattern with express.js, vue, vue-router and vite",
   "main": "index.js",
   "scripts": {
@@ -22,12 +22,5 @@
     "folders"
   ],
   "author": "Jesil Jose (the-provost)",
-  "license": "MIT",
-  "dependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
-    "express": "^4.18.3",
-    "sequelize": "^6.37.1",
-    "vite": "^5.1.4",
-    "vue-router": "^4.3.0"
-  }
+  "license": "MIT"
 }
