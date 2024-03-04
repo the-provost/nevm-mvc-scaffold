@@ -85,22 +85,21 @@ function generateServerFile() {
         }
         console.log('Server file (server.js) generated successfully.');
         installORM();
-        rl.close();
     });
 }
 
 // Prompt the user to choose an ORM
 function installORM() {
-    rl.question('Do you want to install an ORM? (sequelize/mongoose/neither): ', (answer) => {
-        if (answer.toLowerCase() === 'sequelize') {
+    rl.question('Do you want to install an ORM? (sequelize(s)/mongoose(m)/neither(n)): ', (answer) => {
+        if (answer.toLowerCase() === 'sequelize' || answer.toLowerCase() === 's') {
             installSequelize();
-        } else if (answer.toLowerCase() === 'mongoose') {
+        } else if (answer.toLowerCase() === 'mongoose'  || answer.toLowerCase() === 'm') {
             installMongoose();
         } else {
             console.log('Skipping installation of ORM.');
             console.log('Next steps:');
             console.log('- Define your models and database configurations as needed.');
-            rl.close();
+            vueInstall();
         }
     });
 }
@@ -111,13 +110,14 @@ function installSequelize() {
     exec('npm install sequelize', (error, stdout, stderr) => {
         if (error) {
             console.error(`Error installing Sequelize: ${error}`);
+            vueInstall();
             return;
         }
         console.log(stdout);
         console.log('Sequelize installed successfully.');
         console.log('Next steps:');
         console.log('- Define your Sequelize models and database configurations.');
-        rl.close();
+        vueInstall();
     });
 }
 
@@ -127,13 +127,14 @@ function installMongoose() {
     exec('npm install mongoose', (error, stdout, stderr) => {
         if (error) {
             console.error(`Error installing Mongoose: ${error}`);
+            vueInstall();
             return;
         }
         console.log(stdout);
         console.log('Mongoose installed successfully.');
         console.log('Next steps:');
         console.log('- Define your Mongoose models and database configurations.');
-        rl.close();
+        vueInstall();
     });
 }
 
