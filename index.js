@@ -139,6 +139,8 @@ function installMongoose() {
 }
 
 function vueInstall() {
+    // Save the current working directory
+    const currentDirectory = process.cwd();
     // Prompt the user if they want to install Vue.js with Vite
     rl.question('Do you want to install Vue.js with Vite? (y/n): ', (answer) => {
         if (answer.toLowerCase() === 'y') {
@@ -146,6 +148,7 @@ function vueInstall() {
             console.log('Installing Vue.js with Vite...');
             process.chdir(frontEndDirectory); // Change directory to frontend
             exec('npm install vite @vitejs/plugin-vue', (error, stdout, stderr) => {
+                process.chdir(currentDirectory);
                 if (error) {
                     console.error(`Error installing Vue.js with Vite: ${error}`);
                     return;
