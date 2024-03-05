@@ -17,9 +17,11 @@ const directories = [
 
 console.log("\x1b[1m Hey! I am the NEVM MVC Scaffolding Tool you've been searching for!\x1b[0m");
 console.log();
-console.log();
 console.log("\x1b[1m Let's get started on your nodejs app development journey with everything you need to work in peace with a clean MVC structure and a little extra magic... \x1b[0m");
-console.log()
+console.log();
+console.log();
+console.log("\x1b[1m Setting up the scaffolding for the tower you are going to build \x1b[0m");
+console.log();
 function showDivider(character, length) {
     console.log(character.repeat(length));
     console.log(); // Empty line for separation
