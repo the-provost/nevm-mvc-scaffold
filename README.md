@@ -1,6 +1,11 @@
 # NEVM MVC Scaffolding Tool
+[![npm version](https://img.shields.io/npm/v/nevm-mvc-scaffold.svg?style=badge)](https://www.npmjs.com/package/nevm-mvc-scaffold)
+[![License](https://img.shields.io/github/license/the-provost/nevm-mvc-scaffold.svg?style=badge)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/the-provost/nevm-mvc-scaffold.svg?style=badge)](https://github.com/the-provost/nevm-mvc-scaffold/stargazers)
+[![GitHub tag](https://img.shields.io/github/tag/the-provost/nevm-mvc-scaffold.svg?style=badge)](https://github.com/the-provost/nevm-mvc-scaffold/tags)
+---
 
-**Hey there! Welcome to the NEVM MVC Scaffolding Tool** - your companion for Node.js app development with a clean MVC structure and a touch of magic!
+Your companion for Node.js app development with a clean MVC structure and a touch of magic!
 
 ## Introduction
 
