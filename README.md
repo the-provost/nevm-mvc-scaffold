@@ -3,6 +3,9 @@
 [![License](https://img.shields.io/github/license/the-provost/nevm-mvc-scaffold.svg?style=badge)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/the-provost/nevm-mvc-scaffold.svg?style=badge)](https://github.com/the-provost/nevm-mvc-scaffold/stargazers)
 [![GitHub tag](https://img.shields.io/github/tag/the-provost/nevm-mvc-scaffold.svg?style=badge)](https://github.com/the-provost/nevm-mvc-scaffold/tags)
+![NPM Downloads](https://img.shields.io/npm/dt/nevm-mvc-scaffold)
+
+
 ---
 
 Your companion for Node.js app development with a clean MVC structure and a touch of magic!
