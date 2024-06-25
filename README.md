@@ -28,24 +28,74 @@ The **NEVM MVC Scaffolding Tool** is designed to streamline your Node.js applica
   
 - **Simple and Interactive**: The tool provides a simple and interactive command-line interface (CLI) for guiding you through the setup process.
 
-## Getting Started
 
-To get started with the **NEVM MVC Scaffolding Tool**, follow these steps:
+## Directory Structure
 
-1. Clone this repository to your local machine.
-2. Navigate to the directory where you cloned the repository.
-3. Run `npm install` to install dependencies.
-4. Run `node setup.js` to start the scaffolding tool.
-5. Follow the prompts to configure your project structure and install dependencies.
+After installation, your project structure will look like this:
 
-## Usage
+```
+project-root/
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── config/
+│   └── middleware/
+├── frontend/
+│   └── src/
+│       ├── components/
+│       └── router/
+└── server.js
+```
 
-The tool will guide you through the setup process with interactive prompts. Simply follow the instructions provided on the command line to create your project structure and install dependencies as needed.
+## Installation and Usage
+
+To use the **NEVM MVC Scaffolding Tool**, follow these steps:
+
+1. Create a new directory for your project and navigate into it:
+   ```
+   mkdir my-nevm-project
+   cd my-nevm-project
+   ```
+
+2. Install the package:
+   ```
+   npm install nevm-mvc-scaffold
+   ```
+
+3. The tool will automatically run after installation. Follow the prompts to configure your project:
+   - Choose whether to install Express.js
+   - Select an ORM (Sequelize, Mongoose, or none)
+   - Decide if you want to install Vue.js with Vite for the frontend
+
+4. After the setup is complete, your project structure will be ready, and chosen dependencies will be installed.
+
+## Post-Installation Steps
+
+After the tool finishes setting up your project:
+
+1. Review the generated `server.js` file and customize it as needed.
+2. If you chose to install an ORM, set up your database configurations.
+3. If you installed Vue.js, navigate to the `frontend` directory to start developing your frontend.
+4. Use the created directory structure to organize your controllers, models, routes, and services.
+
+## Scripts
+
+The package includes the following npm scripts:
+
+- `npm start`: Runs the scaffolding tool manually (if needed)
+- `npm run dev`: Starts the Vite development server (if Vue.js was installed)
+- `npm run build`: Builds the Vue.js application for production (if Vue.js was installed)
 
 ## License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Acknowledgments
 
-- Special thanks to all contributors and the open-source community for their valuable contributions.
+Special thanks to all contributors and the open-source community for their valuable contributions.
